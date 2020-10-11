@@ -1,4 +1,1 @@
-# Data_Comp_Solution
-List all solution done for Data Contest e.g. Kaggle
-
-#TEST
+Save all solution for homeworks in lectures of MOOCs(eg.coursera)
