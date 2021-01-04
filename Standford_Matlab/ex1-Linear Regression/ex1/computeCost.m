@@ -13,7 +13,9 @@ J = 0;
 % Instructions: Compute the cost of a particular choice of theta
 %               You should set J to the cost.
 
-
+pridiction=X*theta;
+result=pridiction-y;
+J=1/(2*m)*sum((result).^2);
 
 
 
