@@ -1,4 +1,4 @@
-function [J, grad] = costFunction(theta, X, y)
+function [cost, grad] = costFunction(theta, X, y)
 %COSTFUNCTION Compute cost and gradient for logistic regression
 %   J = COSTFUNCTION(theta, X, y) computes the cost of using theta as the
 %   parameter for logistic regression and the gradient of the cost
@@ -8,7 +8,6 @@ function [J, grad] = costFunction(theta, X, y)
 m = length(y); % number of training examples
 
 % You need to return the following variables correctly 
-J = 0;
 grad = zeros(size(theta));
 
 % ====================== YOUR CODE HERE ======================
@@ -18,14 +17,15 @@ grad = zeros(size(theta));
 %               derivatives of the cost w.r.t. each parameter in theta
 %
 % Note: grad should have the same dimensions as theta
-%
-
-
-
-
-
-
-
+first=(theta'*X')';
+second=exp(-1*first);
+third=1+second;
+fourth=1./third;
+cost=-(1/m)*(y'*log(fourth)+(1-y)'*log(1-fourth));
+%========================================================
+% for gradient h_theta(x)=forth
+fifth=(fourth-y)';
+grad=(1/m)*(fifth*X)';
 
 % =============================================================
 
