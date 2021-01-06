@@ -15,7 +15,13 @@ sim = 0;
 %               sigma
 %
 %
-
+n=size(x1,2);
+for k=1:n
+sim=sim+((x1-x2(:,k)).^2);
+end
+sim=sum(sim);
+sim=-(sim)/(2*(sigma)^2);
+sim=exp(sim);
 
 
 

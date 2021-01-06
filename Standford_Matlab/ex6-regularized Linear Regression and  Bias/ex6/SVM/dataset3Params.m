@@ -8,6 +8,7 @@ function [C, sigma] = dataset3Params(X, y, Xval, yval)
 %
 
 % You need to return the following variables correctly.
+range=[0.01; 0.03; 0.1; 0.3; 1; 3; 10; 30];
 C = 1;
 sigma = 0.3;
 
@@ -22,6 +23,28 @@ sigma = 0.3;
 %  Note: You can compute the prediction error using 
 %        mean(double(predictions ~= yval))
 %
+m=0;
+n=0;
+error_ini=100;
+min=error_ini;
+prediction=zeros(8,8);
+error=zeros(8,8);
+for i=1:8
+    for j=1:8
+    C=range(i);
+    sigma=range(j);
+    model= svmTrain(X, y, C, @(x1, x2) gaussianKernel(x1, x2, sigma));
+    predictions= svmPredict(model, Xval);
+    error=mean(double(predictions ~= yval));
+    if(error < min)
+        min=error;
+        m=i;
+        n=j;
+    end
+    end
+end
+C=range(m);
+sigma=range(n);
 
 
 
