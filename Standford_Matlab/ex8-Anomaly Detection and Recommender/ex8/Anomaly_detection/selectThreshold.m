@@ -22,18 +22,10 @@ for epsilon = min(pval):stepsize:max(pval)
     %               
     % Note: You can use predictions = (pval < epsilon) to get a binary vector
     %       of 0's and 1's of the outlier predictions
-
-
-
-
-
-
-
-
-
-
-
-
+predictions=(pval<epsilon);
+pre= sum((predictions==1)&(yval==1))/(sum((predictions==1)&(yval==1))+sum((predictions==1)&(yval==0)));
+recall= sum((predictions==1)&(yval==1))/(sum((predictions==1)&(yval==1))+sum((yval==1)&(predictions==0)));
+F1=(2*pre*recall)/(pre+recall);
 
     % =============================================================
 
